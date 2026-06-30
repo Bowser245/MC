@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changement d'adresse — MC Launcher</title>
+    <style>
+        :root {
+            --bg-color: #1e1e2e;
+            --container-bg: #11111b;
+            --accent-color: #a6e3a1;
+            --text-color: #cdd6f4;
+            --text-muted: #a6adc8;
+            --border-color: #313244;
+            --peach: #fab387;
+            --blue: #89b4fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .redirect-container {
+            text-align: center;
+            background-color: var(--container-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin: 0 0 15px 0;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin: 0 0 25px 0;
+        }
+
+        .url-box {
+            background-color: #181825;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: var(--peach);
+            font-size: 1rem;
+            margin-bottom: 30px;
+            word-break: break-all;
+        }
+
+        .btn-redirect {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #11111b;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(166, 227, 161, 0.2);
+        }
+
+        .btn-redirect:hover {
+            background-color: var(--blue);
+            box-shadow: 0 4px 15px rgba(137, 180, 250, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .countdown {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: #585b70;
+        }
+
+        #timer {
+            font-weight: bold;
+            color: var(--blue);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="redirect-container">
+        <div class="icon">🚀</div>
+        <h1>Nous avons déménagé !</h1>
+        <p>Désolé, nous avons changé d'adresse. Votre launcher et toutes ses fonctionnalités sont désormais disponibles à la nouvelle URL.</p>
+        
+        <!-- Remplace l'adresse ci-dessous par ton vrai lien final -->
+        <div class="url-box" id="url-text">https://bowser245.github.io/DownloadMCLuncher</div>
+
+        <a href="https://bowser245.github.io/DownloadMCLuncher" class="btn-redirect" id="redirect-link">Rejoindre le nouveau site</a>
+
+        <div class="countdown">
+            Redirection automatique dans <span id="timer">5</span> secondes...
+        </div>
+    </div>
+
+    <script>
+        // Met ici l'URL exacte vers laquelle tu veux envoyer le joueur
+        const targetURL = "https://bowser245.github.io/DownloadMCLuncher"; 
+        
+        // Sécurité pour mettre à jour les liens du HTML automatiquement
+        document.getElementById("url-text").textContent = targetURL;
+        document.getElementById("redirect-link").href = targetURL;
+
+        // Compte à rebours avant redirection
+        let timeLeft = 10;
+        const timerElement = document.getElementById("timer");
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = targetURL;
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
